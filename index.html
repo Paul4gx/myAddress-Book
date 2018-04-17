@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="styling.css" rel="stylesheet" type="text/css">
+<title>Address - Book</title>
+</head>
+<body onLoad="checkbrowser()">
+<nav class="navbar navbar-cust navbar-dark navbar-expand">
+<a href="#" class="navbar-brand per-font"><h1><span class="icon-book" style="font-size:30px;"></span> myADDRESS BOOK</h1></a>
+    <button class="navbar-toggler" data-toggle="collaspe" data-target="#menu">
+    	<span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ml-auto">
+            <li><a href="">Home</a></li>
+        </ul>
+    </div>
+</nav>
+<center>
+
+</center>
+
+<div class="container shadow mt-3">
+    <fieldset>
+        <legend class="lead text-center text-capitalize">CREATE NEW CONTACT</legend>
+        <hr class=""/>
+        <div class="form-inline">
+            <center>
+            <select class="form-control"  name="title" id="title">
+                <option>Select Title...</option>
+                <option>Mr.</option>
+                <option>Mrs.</option>
+                <option>Miss</option>
+                <option>Master</option>
+                <option>Dr.</option>
+                <option>Prof.</option>
+                <option>Chief.</option>
+                <option>Bar.</option>
+            </select>
+            <input type="text" name="fname"  id="fname" class="form-control m-2" placeholder="ENTER FIRST NAME">
+            <input type="text" name="sname"  id="sname" class="form-control m-2" placeholder="ENTER LAST NAME">
+            <input type="tex" name="number"  id="number" class="form-control m-2" placeholder="ENTER PHONE NUMBER">
+            <button class="btn btn-primary rounded-circle m-2" onClick="createcontact()"><span class="icon-plus"></span></button>
+            </center>
+        </div>
+    </fieldset>
+<hr class=""/>
+
+<script>
+function checkbrowser(){
+	if (typeof(Storage)=="undefined"){alert("YOUR BROWSER IS NOT SUPPORTED FOR THIS PROJECT");}
+	}
+	function createcontact() {
+		var i;
+		var n = 1;
+		var title = document.getElementById('title').value;
+		var fname = document.getElementById('fname').value;
+		var sname = document.getElementById('sname').value;
+		var number = document.getElementById('number').value;
+		this["contact"+n] = [title, fname, sname, number];
+		alert('contact created sucessfully'+contact1);
+		var edddit = '</div><div class"col-1"><button class="btn btn-secondary rounded-circle" type="button" id="btnedit"><span class="icon-edit"></span></button></div>';
+		var delet = '<div class="col-1"><button class="btn btn-secondary rounded-circle" type="button"><span class="icon-trash"></span></button></div>';
+
+	for (i = 1; i < 2; i++) {
+		var cont = '<div class="col-12" id="contact">'+this["contact"+i]+'</div>';
+		document.getElementById('display').innerHTML += cont+edddit+delet+"</div><br />";
+		var valu = this["contact"+i];
+		valu1 = valu[0];
+		valu2 = valu[1];
+		valu3 = valu[2];
+		valu4 = valu[3];
+		var myfunction = eddit;
+		document.getElementById('btnedit').addEventListener("click",myfunction);
+	} 
+	
+	n = n + 1;
+	function eddit() {
+			var tit = document.createElement("input");
+			tit.setAttribute("value",valu1);
+			tit.setAttribute("id", "titt");
+			tit.setAttribute("class","form-control m-1");
+			var element = document.getElementById('val1');
+			element.appendChild(tit);
+		
+			var fnam = document.createElement("input");
+			fnam.setAttribute("value",valu2);
+			fnam.setAttribute("id", "fnam");
+			fnam.setAttribute("class","form-control m-1");
+			var element = document.getElementById('val1');
+			element.appendChild(fnam);
+			
+			var lnam = document.createElement("input");
+			lnam.setAttribute("value",valu3);
+			lnam.setAttribute("id", "lname");
+			lnam.setAttribute("class","form-control m-1");
+			var element = document.getElementById('val1');
+			element.appendChild(lnam);
+			
+			var numm = document.createElement("input");
+			numm.setAttribute("value",valu4);
+			numm.setAttribute("id", "numm");
+			numm.setAttribute("class","form-control m-1");
+			var element = document.getElementById('val1');
+			element.appendChild(numm);
+			
+			var btnn = document.createElement("button");
+			btnn.setAttribute("class","btn btn-primary m-1");
+			btnn.setAttribute("id", "save");
+			var btname = document.createTextNode('Save Contact');
+			btnn.appendChild(btname);
+			var element = document.getElementById('val1');
+			element.appendChild(btnn);
+			
+		document.getElementById('save').addEventListener("click",save);
+		function save() {
+		var ti = document.getElementById('titt').value;
+		var fn = document.getElementById('fnam').value;
+		var sn = document.getElementById('lnam').value;
+		var nu = document.getElementById('numm').value;
+			
+		alert(ti+" "+fn+" "+sn+" "+nu+"alert this!");
+		}}
+	}
+</script>
+<div class="card">
+    <div class="card-header">
+    <div class="lead text-center text-capitalize">CONTACT LIST</div>
+    </div>
+        <div class="card-body">
+        	<div class="shadow-display m-3 row" id="display">
+            <div class="form-inline" id="val1"></div>
+                    </div>
+            </div>
+              
+        </div>
+		
+    <div class="card-footer">
+    </div>
+</div>
+</p>
+</div>
+</body>
+</html>
